@@ -16,6 +16,68 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven {
+		url "https://www.cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+
+	maven {
+		url "https://maven.shedaniel.me"
+		content {
+			includeGroup "me.shedaniel.cloth.api"
+			includeGroup "me.sargunvohra.mcmods"
+			includeGroup "me.shedaniel.cloth"
+			includeGroup "me.shedaniel"
+		}
+	}
+	maven {
+		name = "Ladysnake Libs"
+		url = "https://ladysnake.jfrog.io/artifactory/mods"
+		content {
+			includeGroup "io.github.onyxstudios"
+			includeGroup "io.github.onyxstudios.Cardinal-Components-API"
+		}
+	}
+
+	maven {
+		url 'https://maven.blamejared.com'
+		content {
+			includeGroup "vazkii.patchouli"
+		}
+	}
+
+
+	maven { 
+		url "https://bai.jfrog.io/artifactory/maven" 
+		content {
+			includeGroup "mcp.mobius.waila"
+		}
+	}
+
+	maven {
+		name = "BuildCraft"
+		url = "https://mod-buildcraft.com/maven"
+		content {
+			includeGroup "alexiil.mc.lib"
+		}
+	}
+
+	maven {
+		url "https://maven.terraformersmc.com"
+		content {
+			includeGroup "com.terraformersmc"
+		}
+	}
+
+	maven {
+		name = "CottonMC"
+		url = "https://server.bbkr.space/artifactory/libs-release"
+		content {
+			includeGroup "io.github.cottonmc"
+		}
+	}
 }
 
 dependencies {
@@ -26,6 +88,37 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	modImplementation "io.github.onyxstudios:Cardinal-Components-API:${project.cardinal_components_version}"
+	include "io.github.onyxstudios:Cardinal-Components-API:${project.cardinal_components_version}"
+
+	modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+
+	modImplementation "vazkii.patchouli:Patchouli:${project.patchouli_version}"
+	include "vazkii.patchouli:Patchouli:${project.patchouli_version}"
+
+	modApi "me.shedaniel.cloth.api:cloth-common-events-v1:${project.cloth_api_version}"
+	modApi "me.shedaniel.cloth.api:cloth-durability-bar-api-v1:${project.cloth_api_version}"
+	include "me.shedaniel.cloth.api:cloth-common-events-v1:${project.cloth_api_version}"
+	include "me.shedaniel.cloth.api:cloth-durability-bar-api-v1:${project.cloth_api_version}"
+
+	modImplementation "mcp.mobius.waila:wthit-api:fabric-${project.hwyla_version}"
+	modRuntime "mcp.mobius.waila:wthit-api:fabric-${project.hwyla_version}"
+
+	modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+
+	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
+	modImplementation "curse.maven:architectury-fabric-419697:${project.architectury_file}"
+	modImplementation "curse.maven:kubejs-395864:${project.kubejs_file}"
+	modRuntime "curse.maven:rhino-416294:${project.rhino_file}"
+
+	modImplementation "alexiil.mc.lib:libblockattributes-core:${project.lba_version}"
+	modImplementation "alexiil.mc.lib:libblockattributes-fluids:${project.lba_version}"
+	modImplementation "alexiil.mc.lib:libblockattributes-items:${project.lba_version}"
+	include "alexiil.mc.lib:libblockattributes-core:${project.lba_version}"
+	include "alexiil.mc.lib:libblockattributes-fluids:${project.lba_version}"
+	include "alexiil.mc.lib:libblockattributes-items:${project.lba_version}"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
